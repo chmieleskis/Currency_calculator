@@ -26,7 +26,7 @@ class App extends Component{
             </>
         )
     }
-};
+}
 
 // ---------- Nawigacja ----------
 class Navigation extends Component {
@@ -97,22 +97,22 @@ class Calculator extends Component {
                 getMid = r.mid;
                 getCurrency = r.currency;
             }
-        })
+        });
         this.setState({
             dropdownIsOpen: false,
             buttonName: getCurrency,
             mid: getMid
-        })
+        });
 
         // console.log(getMid);
-    }
+    };
 
     handleAmount = (e) => {
         this.setState( {
             amount: e.target.value
         })
         // console.log(this.state.amount)
-    }
+    };
 
 
     handleName = (e) => {
@@ -123,10 +123,9 @@ class Calculator extends Component {
             expenseName: e.target.value,
             currentDate: date
         })
-    }
+    };
 
     handleSave = () => {
-        console.log('aaa');
         if (localStorage.getItem('data') !== null) {
             const tempArr = JSON.parse(localStorage.getItem('data'));
             tempArr.push({mid: this.state.mid, amount: this.state.amount, expenseName: this.state.expenseName, currentDate: this.state.currentDate});
@@ -137,7 +136,7 @@ class Calculator extends Component {
         this.props.history.push({
             pathname: '/expenseslist'
         })
-    }
+    };
 
     render() {
         if (this.state.dropdownIsOpen === false && (this.state.mid === null || this.state.amount === null)) {
@@ -271,12 +270,8 @@ class ExpensesList extends Component {
         super(props);
         this.state = {
             dataFromLocalStorage: null,
-            sum: 0
+            sum: 0,
         }
-    }
-
-    handleCleanStorage = () => {
-        localStorage.clear();
     }
 
     componentDidMount() {
@@ -290,6 +285,16 @@ class ExpensesList extends Component {
         }
     }
 
+    handleCleanStorage = () => {
+        localStorage.clear();
+        this.setState({
+            dataFromLocalStorage: [],
+        })
+    };
+
+    handleDeleteItem = () => {
+    }
+
     render() {
         if (this.state.finishedLoading) {
             return (
@@ -300,13 +305,13 @@ class ExpensesList extends Component {
                             <p>{val.currentDate}</p>
                             <p>{val.expenseName}</p>
                             <p>{(val.mid * val.amount).toFixed(2)}</p>
-                            <span><button className='removePositionBtn'>Usuń</button></span>
+                            <span><button onClick={this.handleDeleteItem} className='removePositionBtn'>Usuń</button></span>
                         </li>
                     })}
                     <li className='expense last-row'>
                         <p></p>
                         <p>Suma</p>
-                        <p>dużo hajsu</p>
+                        <p>{this.state.sum} zł</p>
                         <span><button className='removeAllBtn' onClick={this.handleCleanStorage}>Wyczyść</button></span>
                     </li>
                 </ul>
