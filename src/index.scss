@@ -1,0 +1,288 @@
+html {
+  font-size: 10px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@import "settings/variables";
+
+.main {
+  width: 76.8rem;
+  @media (max-width: 768px)  {
+    width: 100%;
+  }
+}
+
+header {
+  height: 8rem;
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+  background-color: $navBackgroundColor;
+  border-top-left-radius: 2rem;
+  border-top-right-radius: 2rem;
+  .logo {
+    display: flex;
+    align-items: center;
+    margin-left: 5rem;
+    @media (max-width: 500px) {
+      margin-left: 2.5rem;
+    }
+    i {
+
+      font-size: 5rem;
+      color: $headerColor
+    }
+    h1 {
+      text-transform: uppercase;
+      font-family: $fontLogo;
+      font-size: 1.8rem;
+      color: #fafafa;
+      margin-left: 3rem;
+      @media (max-width: 500px) {
+        font-size: 1.5rem;
+      }
+    }
+  }
+  .links {
+    display: flex;
+    margin-right: 5rem;
+    @media (max-width: 500px) {
+      margin-right: 2.5rem;
+    }
+    .navButton {
+      width: 4rem;
+      height: 4rem;
+      border: 3px solid $headerColor;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      i {
+        font-size: 2rem;
+        color: $headerColor;
+      }
+    }
+    .navCalc {
+      margin-right: 2rem;
+    }
+  }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .calculator {
+    background-image: url("images/image.png");
+    border-bottom-left-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+    height: calc(100vh - 8rem);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    .dropdown-button {
+      margin-top: 5rem;
+      font-family: $fontMain;
+      font-size: 2rem;
+      font-weight: 700;
+      width: 60%;
+      height: 5rem;
+      border: 2px solid $detailsColor;
+      background-color: $detailsColor;
+      border-radius: 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      @media (max-width: 605px) {
+        width: 80%;
+      }
+    }
+
+    .dropdown-content {
+      margin-top: .5rem;
+      background-color: white;
+      width: 60%;
+      height: 25rem;
+      border: 2px solid $detailsColor;
+      border-radius: 1rem;
+      overflow-y: scroll;
+      @media (max-width: 605px) {
+        width: 80%;
+      }
+      &::-webkit-scrollbar {
+        width: 1.5rem;
+      }
+
+      &::-webkit-scrollbar-track {
+        border-radius: .5rem;
+        -webkit-box-shadow: inset 0 0 6px rgba(229, 189, 31, 0.71)
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: $detailsColor;
+        border-radius: .5rem;
+      }
+
+      option {
+        margin: 1rem 2rem;
+        cursor: pointer;
+        font-family: $fontList;
+        font-size: 2rem;
+        color: $fontColor;
+      }
+    }
+  }
+}
+
+.amountInput, .nameInput {
+  color: $fontColor;
+  font-family: $fontMain;
+  font-size: 2rem;
+  margin-top: 3rem;
+  padding: 0 2rem;
+  width: calc(60% - 4rem);
+  height: 5rem;
+  border: 2px solid $detailsColor;
+  border-radius: 1rem;
+  @media (max-width: 605px) {
+    width: calc(80% - 4rem);
+  }
+  &::placeholder {
+    font-family: $fontMain;
+    font-weight: 300;
+    font-size: 2rem;
+  }
+}
+
+.nameInput {
+  margin-top: 7rem;
+}
+
+.exchanged {
+  margin-top: 3rem;
+  width: 60%;
+  height: 10rem;
+  background-color: $detailsColor;
+  border: 2px solid $detailsColor;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @media (max-width: 605px) {
+    width: 80%;
+  }
+  .exchangedText {
+    color: white;
+    font-family: $fontMain;
+    font-size: 4rem;
+    font-weight: 700;
+  }
+}
+
+.addBtn {
+  margin: 3rem 0 5rem 0;
+  width: 20%;
+  height: 4rem;
+  border-radius: 1rem;
+  background-color: $detailsColor;
+  border: none;
+  color: white;
+  font-family: $fontMain;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+
+.expensesList {
+  height: calc(100vh - 8rem);
+  background-image: url("images/image.png");
+  border-bottom-left-radius: 2rem;
+  border-bottom-right-radius: 2rem;
+  margin: 0;
+  padding: 0;
+  .empty-list {
+    display: flex;
+    justify-content: center;
+    p {
+      margin-top: 5rem;
+      font-family: $fontMain;
+      font-size: 3rem;
+      font-weight: 700;
+      color: $fontColor;
+    }
+  }
+  .expense {
+    padding: 0 4rem;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    p{
+      width: 18%;
+      font-size: 1.6rem;
+    }
+    p:nth-child(2) {
+      width: 48%;
+    }
+    span {
+      width: 16%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .removePositionBtn {
+        color: white;
+        padding: 0.5rem 1rem;
+        background-color: $detailsColor;
+        border: 3px solid $detailsColor;
+        border-radius: .3rem;
+      }
+    }
+  }
+  .main-row, .last-row {
+    font-family: $fontMain;
+    font-weight: 700;
+    background-color: $detailsColor;
+    color: white;
+  }
+  .table-row {
+    position:relative;
+    font-family: $fontList;
+    &::before {
+      content: "";
+      position: absolute;
+      left: 2rem;
+      bottom: 0;
+      width: calc(100% - 4rem);
+      border-bottom: 3px solid $detailsColor;
+    }
+    p {
+      color: $fontColor;
+    }
+  }
+  .last-row {
+    margin-top: 2rem;
+    p:nth-child(1) {
+      width: 45%;
+    }
+    p:nth-child(2) {
+      width: 18%;
+    }
+    p:nth-child(3) {
+      width: 21%;
+    }
+    .removeAllBtn {
+      color: white;
+      padding: 0.5rem 2rem;
+      border-radius: .3rem;
+      background-color: $navBackgroundColor;
+      border: 3px solid $navBackgroundColor;
+    }
+  }
+}
+
