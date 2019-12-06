@@ -61,7 +61,8 @@ class Calculator extends Component {
             mid: null,
             amount: null,
             expenseName: '',
-            currentDate: null
+            currentDate: null,
+            sum: 0
         };
 
     componentDidMount() {
@@ -258,7 +259,7 @@ class NameInput extends Component{
 
 class Button extends Component {
     render() {
-        return <button onClick={this.props.onClick} className='addBtn'>Dodaj</button>
+        return <button onClick={this.props.onClick}  className='addBtn'>Dodaj</button>
     }
 }
 
