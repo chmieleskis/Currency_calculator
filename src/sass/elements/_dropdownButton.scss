@@ -1,0 +1,24 @@
+.dropdown-button {
+  font-family: $fontMain;
+  font-size: 2rem;
+  font-weight: 700;
+  width: 39%;
+  height: 10rem;
+  border: 2px solid $detailsColor;
+  background-color: $detailsColor;
+  border-radius: 1rem;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  padding: 0 3%;
+  @media (max-width: 768px) {
+    width: 59%;
+  }
+  @media (max-width: 480px) {
+    width: 79%;
+    font-size: 1.4rem;
+    height: 6rem;
+  }
+}

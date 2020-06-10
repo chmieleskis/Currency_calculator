@@ -1,0 +1,137 @@
+@import 'settings/fonts';
+@import 'settings/colors';
+
+@import 'elements/navigation';
+@import 'elements/inputs';
+@import 'elements/dropdownButton';
+@import 'elements/dropdownContent';
+@import 'elements/exchanged';
+@import 'elements/addButton';
+
+html {
+    font-size: 10px;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  
+  
+  .main {
+    width: 120rem;
+    @media (max-width: 1200px)  {
+      width: 100%;
+    }
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .calculator {
+      background-image: url("../assets/background.png");
+      border-bottom-left-radius: 2rem;
+      border-bottom-right-radius: 2rem;
+      height: calc(100vh - 18rem);
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      padding: 5rem 0;
+      @media (max-width: 480px) {
+        height: calc(100vh - 15rem);
+        padding: 3.5rem 0;
+      };     
+    }
+  }
+   
+  .expensesList {
+    height: calc(100vh - 8rem);
+    background-image: url("../assets/background.png");
+    border-bottom-left-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+    margin: 0;
+    padding: 0;
+    .empty-list {
+      display: flex;
+      justify-content: center;
+      p {
+        margin-top: 5rem;
+        font-family: $fontMain;
+        font-size: 3rem;
+        font-weight: 700;
+        color: $fontColor;
+      }
+    }
+    .expense {
+      padding: 0 4rem;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      p{
+        width: 18%;
+        font-size: 1.6rem;
+      }
+      p:nth-child(2) {
+        width: 48%;
+      }
+      span {
+        width: 16%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .removePositionBtn {
+          color: white;
+          padding: 0.5rem 1rem;
+          background-color: $detailsColor;
+          border: 3px solid $detailsColor;
+          border-radius: .3rem;
+        }
+      }
+    }
+    .main-row, .last-row {
+      font-family: $fontMain;
+      font-weight: 700;
+      background-color: $detailsColor;
+      color: white;
+    }
+    .table-row {
+      position:relative;
+      font-family: $fontList;
+      &::before {
+        content: "";
+        position: absolute;
+        left: 2rem;
+        bottom: 0;
+        width: calc(100% - 4rem);
+        border-bottom: 3px solid $detailsColor;
+      }
+      p {
+        color: $fontColor;
+      }
+    }
+    .last-row {
+      margin-top: 2rem;
+      p:nth-child(1) {
+        width: 48%;
+      }
+      p:nth-child(2) {
+        width: 18%;
+      }
+      p:nth-child(3) {
+        width: 18%;
+      }
+      .removeAllBtn {
+        color: white;
+        padding: 0.5rem 2rem;
+        border-radius: .3rem;
+        background-color: $navBackgroundColor;
+        border: 3px solid $navBackgroundColor;
+      }
+    }
+  }
+  
+  

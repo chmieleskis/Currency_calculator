@@ -1,0 +1,29 @@
+.amountInput, .nameInput {
+    color: $fontColor;
+    font-family: $fontMain;
+    font-size: 2rem;
+    margin-top: 3rem;
+    padding: 0 2rem;
+    width: calc(45% - 4rem);
+    height: 5rem;
+    border: 2px solid $detailsColor;
+    border-radius: 1rem;
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+    }
+    @media (max-width: 768px) {
+      width: calc(65% - 4rem);
+    }
+    @media (max-width: 480px) {
+      width: calc(85% - 4rem);
+    }
+    &::placeholder {
+      font-family: $fontMain;
+      font-weight: 300;
+      font-size: 2rem;
+    }
+  }
+  
+  .nameInput {
+    margin-top: 5rem;
+  }

@@ -1,0 +1,63 @@
+header {
+  width: 100vh;
+  height: 8rem;
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+  background-color: $navBackgroundColor;
+  border-top-left-radius: 2rem;
+  border-top-right-radius: 2rem;
+  .logo {
+    display: flex;
+    align-items: center;
+    margin-left: 5rem;
+    @media (max-width: 500px) {
+      margin-left: 2.5rem;
+    }
+    i {
+
+      font-size: 5rem;
+      color: $headerColor
+    }
+    h1 {
+      text-transform: uppercase;
+      font-family: $fontLogo;
+      font-size: 1.8rem;
+      color: #fafafa;
+      margin-left: 3rem;
+      @media (max-width: 768px) {
+        font-size: 1.5rem;
+      }
+      @media (max-width: 480px) {
+        font-size: .9rem;
+        margin-left: 1.5rem;
+      }
+    }
+  }
+  .links {
+    display: flex;
+    margin-right: 5rem;
+    @media (max-width: 480px) {
+      margin-right: 2.5rem;
+    }
+    .navButton {
+      width: 4rem;
+      height: 4rem;
+      border: 3px solid $headerColor;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      i {
+        font-size: 2rem;
+        color: $headerColor;
+      }
+    }
+    .navCalc {
+      margin-right: 2rem;
+      @media (max-width: 480px) {
+        margin-right: 1rem;
+      }
+    }
+  }
+}
