@@ -11,7 +11,7 @@ header {
     display: flex;
     align-items: center;
     margin-left: 5rem;
-    @media (max-width: 500px) {
+    @media (max-width: 480px) {
       margin-left: 2.5rem;
     }
     i {

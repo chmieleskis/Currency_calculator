@@ -15,61 +15,87 @@ class Calculator extends Component {
         selectedRate: '',
         data: '',
         buttonName: 'Wybierz walutę',
-        mid: null,
-        amount: null,
+        mid: undefined,
+        amount: undefined,
         expenseName: '',
-        currentDate: null,
+        currentDate: undefined,
         sum: 0
     };
 
-// componentDidMount() {
-//     fetch(`http://api.nbp.pl/api/exchangerates/tables/A/`, {
-//         headers: {
-//             'Accept': 'application/json'
-//         }
-//     }).then(r => {
-//         if (r.ok === true) {
-//             return r.json();
-//         } else {
-//             throw new Error('Brak sieci')
-//         }
-//     }).then(data => {
-//         // console.log(data[0].rates)
-//         this.setState({
-//             data: data[0].rates
+componentDidMount() {
+    fetch(`http://api.nbp.pl/api/exchangerates/tables/A/`, {
+        headers: {
+            'Accept': 'application/json'
+        }
+    }).then(r => {
+        if (r.ok === true) {
+            return r.json();
+        } else {
+            throw new Error('Brak sieci')
+        }
+    }).then(data => {
+        console.log(data[0].rates)
+        this.setState({
+            data: data[0].rates
+        })
+    }).catch(err => {
+        console.log(err)
+    })
+}
+
+// componentDidMount () {
+//     Promise.all([
+//         fetch(`http://api.nbp.pl/api/exchangerates/tables/A/`, {
+//             headers: {
+//                 'Accept': 'application/json'
+//             }
+//         }),
+//         fetch(`http://api.nbp.pl/api/exchangerates/tables/B/`, {
+//             headers: {
+//                 'Accept': 'application/json'
+//             }
+//         }).then(r1 => {
+//                     if (r1.ok === true) {
+//                         return r1.json();
+//                     } else {
+//                         throw new Error('Brak sieci')
+//                     }
+//                 }).then(data => {
+//             console.log(data[0].rates)
+//             this.setState({
+//                 data: data[0].rates
+//             })
+//         }).catch(err => {
+//             console.log(err)
 //         })
-//     }).catch(err => {
-//         console.log(err)
-//     })
+//     ]);
 // }
 
-componentDidMount () {
-    Promise.all([
-        fetch(`http://api.nbp.pl/api/exchangerates/tables/A/`, {
-            headers: {
-                'Accept': 'application/json'
-            }
-        }),
-        fetch(`http://api.nbp.pl/api/exchangerates/tables/B/`, {
-            headers: {
-                'Accept': 'application/json'
-            }
-        }).then(r => {
-            if (r.ok === true) {
-                return r.json();
-            } else {
-                throw new Error('Brak sieci')
-            }
-        }).then(data => {
-            console.log(data[0].rates)
-            this.setState({
-                data: data[0].rates
-            })
-        }).catch(err => {
-            console.log(err)
-        })
-    ]);
-}
+// componentDidMount () {
+//     Promise.all([
+//     	fetch(`http://api.nbp.pl/api/exchangerates/tables/A/`, {
+//             headers: {
+//                 'Accept': 'application/json'
+//             }
+//         }),
+//         fetch(`http://api.nbp.pl/api/exchangerates/tables/B/`, {
+//             headers: {
+//                 'Accept': 'application/json'
+//             }
+//         })
+//     ]).then(responses => {
+//     	// Get a JSON object from each of the responses
+//     	return responses.map(function (response) {
+//     		return response.json();
+//            });
+//     }).then(data => {
+//         console.log(data[0].rates);
+//         console.log(data[1]);
+//     }).catch(function (error) {
+//     	// if there's an error, log it
+//     	console.log(error);
+//     });
+// }
 
 handleOpenDropdown = () => {
     this.setState({dropdownIsOpen: !this.state.dropdownIsOpen})
@@ -113,7 +139,7 @@ handleName = (e) => {
 };
 
 handleSave = () => {
-    if (localStorage.getItem('data') !== null) {
+    if (localStorage.getItem('data') !== undefined) {
         const tempArr = JSON.parse(localStorage.getItem('data'));
         tempArr.push({mid: this.state.mid, amount: this.state.amount, expenseName: this.state.expenseName, currentDate: this.state.currentDate});
         localStorage.setItem('data', JSON.stringify(tempArr));
@@ -126,7 +152,7 @@ handleSave = () => {
 };
 
     render() {
-        if (this.state.dropdownIsOpen === false && (this.state.mid === null || this.state.amount === null)) {
+        if (this.state.dropdownIsOpen === false && (this.state.mid === undefined || this.state.amount === undefined)) {
             return (
                 <div className='main calculator'>
                     <DropdownButton onClick={this.handleOpenDropdown} name={this.state.buttonName}/>
@@ -134,7 +160,7 @@ handleSave = () => {
                 </div>
             )
         }
-        if (this.state.dropdownIsOpen === true && (this.state.mid === null || this.state.amount === null)) {
+        if (this.state.dropdownIsOpen === true && (this.state.mid === undefined || this.state.amount === undefined)) {
             return (
                 <div className='main calculator'>
                     <DropdownButton onClick={this.handleOpenDropdown} name={this.state.buttonName}/>
@@ -144,7 +170,7 @@ handleSave = () => {
             )
         }
 
-        if (this.state.dropdownIsOpen === false && (this.state.mid !== null && this.state.amount !== null)) {
+        if (this.state.dropdownIsOpen === false && (this.state.mid !== undefined && this.state.amount !== undefined)) {
             return (
                 <div className='main calculator'>
                     <DropdownButton onClick={this.handleOpenDropdown} name={this.state.buttonName}/>
@@ -155,7 +181,7 @@ handleSave = () => {
                 </div>
             )
         }
-        if (this.state.dropdownIsOpen === false && (this.state.mid !== null && this.state.amount !== null)) {
+        if (this.state.dropdownIsOpen === false && (this.state.mid !== undefined && this.state.amount !== undefined)) {
             return (
                 <div className='main calculator'>
                     <DropdownButton onClick={this.handleOpenDropdown} name={this.state.buttonName}/>
@@ -166,7 +192,7 @@ handleSave = () => {
                 </div>
             )
         }
-        if (this.state.dropdownIsOpen === true && (this.state.mid !== null && this.state.amount !== null)) {
+        if (this.state.dropdownIsOpen === true && (this.state.mid !== undefined && this.state.amount !== undefined)) {
             return (
                 <div className='main calculator'>
                     <DropdownButton onClick={this.handleOpenDropdown} name={this.state.buttonName}/>
